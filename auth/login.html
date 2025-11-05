@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SchoolHub</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .auth-card {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .auth-brand {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-login-btn {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+        }
+        
+        .social-login-btn:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .divider span {
+            padding: 0 1rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .form-floating label {
+            color: var(--text-secondary);
+        }
+        
+        .auth-illustration {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .auth-illustration {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="auth-card">
+                        <div class="row g-0">
+                            <!-- Left Side - Form -->
+                            <div class="col-lg-6 p-5">
+                                <div class="mb-4">
+                                    <a href="../index.html" class="text-decoration-none">
+                                        <h1 class="auth-brand text-gradient">
+                                            <i class="fas fa-graduation-cap"></i> SchoolHub
+                                        </h1>
+                                    </a>
+                                    <h2 class="h4 mb-2">Welcome Back!</h2>
+                                    <p class="text-muted">Sign in to continue to your dashboard</p>
+                                </div>
+                                
+                                <!-- Social Login -->
+                                <div class="mb-4">
+                                    <button class="social-login-btn mb-3">
+                                        <i class="fab fa-google text-danger"></i>
+                                        Continue with Google
+                                    </button>
+                                    <button class="social-login-btn">
+                                        <i class="fab fa-microsoft text-primary"></i>
+                                        Continue with Microsoft
+                                    </button>
+                                </div>
+                                
+                                <div class="divider">
+                                    <span>OR</span>
+                                </div>
+                                
+                                <!-- Login Form -->
+                                <form id="loginForm" class="needs-validation" novalidate>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                        <label for="email">Email Address</label>
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    </div>
+                                    
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                        <label for="password">Password</label>
+                                        <div class="invalid-feedback">Please enter your password.</div>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">
+                                                Remember me
+                                            </label>
+                                        </div>
+                                        <a href="forgot-password.html" class="text-primary">Forgot password?</a>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary w-100 mb-3 py-3">
+                                        <i class="fas fa-sign-in-alt me-2"></i> Sign In
+                                    </button>
+                                    
+                                    <div class="text-center">
+                                        <p class="text-muted">Don't have an account? <a href="signup.html" class="text-primary fw-semibold">Sign Up</a></p>
+                                    </div>
+                                </form>
+                                
+                                <!-- Portal Selection (Demo) -->
+                                <div class="mt-4 p-3 bg-light rounded">
+                                    <p class="small mb-2 fw-semibold">Quick Access (Demo):</p>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <a href="../superadmin/dashboard.html" class="btn btn-sm btn-outline-primary">Super Admin</a>
+                                        <a href="../admin/dashboard.html" class="btn btn-sm btn-outline-primary">School Admin</a>
+                                        <a href="../teacher/dashboard.html" class="btn btn-sm btn-outline-primary">Teacher</a>
+                                        <a href="../student/dashboard.html" class="btn btn-sm btn-outline-primary">Student</a>
+                                        <a href="../parent/dashboard.html" class="btn btn-sm btn-outline-primary">Parent</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Right Side - Illustration -->
+                            <div class="col-lg-6 auth-illustration">
+                                <div class="text-center">
+                                    <i class="fas fa-school" style="font-size: 8rem; opacity: 0.9;"></i>
+                                    <h3 class="mt-4 mb-3">Manage Your School Effortlessly</h3>
+                                    <p class="opacity-75">Access powerful tools for students, teachers, and administration all in one place.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    
+    <script>
+        // Handle form submission (demo)
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (this.checkValidity()) {
+                // In a real app, this would authenticate the user
+                alert('Login successful! Redirecting to dashboard...');
+                window.location.href = '../admin/dashboard.html';
+            }
+            
+            this.classList.add('was-validated');
+        });
+    </script>
+</body>
+</html>
